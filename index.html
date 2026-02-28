@@ -1,368 +1,723 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Vikas Pal | Full Stack Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Vikas Pal — Full Stack Developer, Problem Solver, and Computer Science Undergraduate. Skilled in Django, React, C++, Python.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Vikas Pal, Full Stack Developer, Portfolio, Django, React, Python, C++">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Vikas Pal - Full Stack Developer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Portfolio of Vikas Pal — Full Stack Developer, Problem Solver, and Computer Science Undergraduate.">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
+
 <body>
-
-<!-- Particle Canvas Background -->
-<canvas id="particles"></canvas>
-
-<!-- Navigation -->
-<header id="navbar">
-    <nav>
-        <a href="#" class="logo">&lt;VP /&gt;</a>
-        <ul class="nav-links">
-            <li><a href="#about" data-text="About">About</a></li>
-            <li><a href="#skills" data-text="Skills">Skills</a></li>
-            <li><a href="#experience" data-text="Experience">Experience</a></li>
-            <li><a href="#projects" data-text="Projects">Projects</a></li>
-            <li><a href="#achievements" data-text="Achievements">Achievements</a></li>
-            <li><a href="#contact" data-text="Contact">Contact</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-</header>
-
-<!-- Hero Section -->
-<section class="hero" id="hero">
-    <div class="hero-content">
-        <p class="hero-greeting">Hello, I'm</p>
-        <h1 class="hero-name">Vikas Pal</h1>
-        <div class="typing-wrapper">
-            <span class="typing-text" id="typing-text"></span>
-            <span class="cursor">|</span>
-        </div>
-        <p class="hero-desc">Building robust full-stack applications &amp; solving real-world problems with code.</p>
-        <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Contact Me</a>
-            <a href="#projects" class="btn btn-outline"><i class="fas fa-code"></i> View Projects</a>
-        </div>
-        <div class="hero-social">
-            <a href="mailto:8077vikas@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="tel:+918077811446" title="Phone"><i class="fas fa-phone"></i></a>
-        </div>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="box">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-    <div class="scroll-indicator">
-        <div class="mouse">
-            <div class="wheel"></div>
+  </div>
+  <!-- /Preloader -->
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="logo">
+          <a href="#" class="logo-link">V</a>
         </div>
-        <p>Scroll Down</p>
-    </div>
-</section>
+        <div class="menu justify-content-center align-items-center outer-shadow hover-in-shadow">
+          <span></span>
+        </div> <!-- ./menu -->
+      </div> <!-- ./row -->
+    </div> <!-- ./container -->
+  </header>
+  <!-- /Header -->
 
-<!-- About Section -->
-<section id="about" class="section">
-    <div class="section-container">
-        <h2 class="section-title"><span class="title-number">01.</span> About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>
-                    I'm a <strong>detail-oriented Computer Science undergraduate</strong> with a strong foundation in 
-                    Data Structures, Algorithms, DBMS, Operating Systems and Computer Networks.
-                </p>
-                <p>
-                    I have hands-on experience building <strong>full-stack web applications</strong> using Django and React.
-                    I'm passionate about solving real-world problems using technology and writing clean, efficient, maintainable code.
-                </p>
-                <p>
-                    When I'm not coding, you'll find me competing in chess tournaments, participating in hackathons,
-                    or exploring new technologies to expand my skill set.
-                </p>
-            </div>
-            <div class="about-stats">
-                <div class="stat-card">
-                    <div class="stat-number" data-target="4">0</div>
-                    <div class="stat-label">Projects Built</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="5">0</div>
-                    <div class="stat-label">Achievements</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="92">0</div>
-                    <div class="stat-label">JEE Percentile</div>
-                </div>
-            </div>
+  <!-- Navication Menu -->
+  <div class="nav-menu">
+    <div class="nav-menu-close outer-shadow hover-in-shadow">&times;</div>
+    <div class="nav-menu-inner justify-content-center align-items-center">
+      <ul>
+        <li><a href="#home" class="link-item active">Home</a></li>
+        <li><a href="#about" class="link-item outer-shadow hover-in-shadow">About</a></li>
+        <li><a href="#portfolio" class="link-item outer-shadow hover-in-shadow">Projects</a></li>
+        <li><a href="#contact" class="link-item outer-shadow hover-in-shadow">Contact</a></li>
+      </ul>
+    </div> <!-- ./nav-menu-inner -->
+    <!-- Copyright -->
+    <p class="copyright"><i class='bx bxs-heart'></i> COPYRIGHT &copy; 2026. ALL RIGHTS RESERVED. DESIGNED BY <a
+        href="#">Vikas Pal</a> <i class='bx bxs-heart'></i></p>
+  </div> <!-- ./nav-menu -->
+  <div class="fade-out-effect"></div>
+
+  <!-- Home Section -->
+  <section class="home-section section active" id="home">
+    <!-- Effect Wrap -->
+    <div class="effect-wrap">
+      <div class="effect effect-1"></div>
+      <div class="effect effect-2">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="effect effect-3"></div>
+      <div class="effect effect-4"></div>
+      <div class="effect effect-5 justify-content-between">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- /Effect Wrap -->
+    <div class="container">
+      <div class="row full-screen align-items-center">
+        <div class="home-text">
+          <p>Hello, I'm</p>
+          <h1>Vikas Pal</h1>
+          <h2>Full Stack Developer</h2>
+          <div class="btn-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <a href="#about" class="link-item outer-shadow hover-in-shadow btn-1">More About Me</a>
+            <a href="https://drive.google.com/file/d/1UCJqvoTBObXngzgTwLzNI925rq6f6Vo3/view?usp=sharing" target="_blank"
+              class="outer-shadow hover-in-shadow btn-1">View / Download
+              CV</a>
+          </div>
         </div>
-    </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="section section-alt">
-    <div class="section-container">
-        <h2 class="section-title"><span class="title-number">02.</span> Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card" data-tilt>
-                <div class="skill-icon"><i class="fas fa-code"></i></div>
-                <h3>Languages</h3>
-                <div class="skill-tags">
-                    <span class="tag">C++</span>
-                    <span class="tag">C</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">JavaScript</span>
-                </div>
-            </div>
-            <div class="skill-card" data-tilt>
-                <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
-                <h3>Frameworks</h3>
-                <div class="skill-tags">
-                    <span class="tag">Django</span>
-                    <span class="tag">React.js</span>
-                </div>
-            </div>
-            <div class="skill-card" data-tilt>
-                <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
-                <h3>Web Technologies</h3>
-                <div class="skill-tags">
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS3</span>
-                    <span class="tag">Bootstrap</span>
-                </div>
-            </div>
-            <div class="skill-card" data-tilt>
-                <div class="skill-icon"><i class="fas fa-database"></i></div>
-                <h3>Database</h3>
-                <div class="skill-tags">
-                    <span class="tag">SQL</span>
-                </div>
-            </div>
-            <div class="skill-card" data-tilt>
-                <div class="skill-icon"><i class="fas fa-tools"></i></div>
-                <h3>Tools</h3>
-                <div class="skill-tags">
-                    <span class="tag">Git</span>
-                    <span class="tag">GitHub</span>
-                    <span class="tag">GitLab</span>
-                    <span class="tag">VS Code</span>
-                </div>
-            </div>
-            <div class="skill-card" data-tilt>
-                <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                <h3>Core Subjects</h3>
-                <div class="skill-tags">
-                    <span class="tag">DSA</span>
-                    <span class="tag">OOP</span>
-                    <span class="tag">DBMS</span>
-                    <span class="tag">OS</span>
-                    <span class="tag">CN</span>
-                </div>
-            </div>
+        <div class="home-img">
+          <div class="img-box inner-shadow">
+            <!-- Using a generic developer icon placeholder for now, you can replace with your image -->
+            <img src="images/profile-pic.jpg" class="outer-shadow" alt="profile-pic"
+              onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
+  <!-- /Home Section -->
 
-<!-- Experience Section -->
-<section id="experience" class="section">
-    <div class="section-container">
-        <h2 class="section-title"><span class="title-number">03.</span> Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <h3>Python Programming Intern</h3>
-                        <span class="badge">Internship</span>
-                    </div>
-                    <h4><i class="fas fa-building"></i> Brainwave Matrix</h4>
-                    <p class="date"><i class="fas fa-calendar-alt"></i> May 2025 — August 2025</p>
-                    <ul>
-                        <li>Developed CLI-based ATM Interface with secure login and file-based persistence.</li>
-                        <li>Built Inventory Management System with JSON storage and full CRUD operations.</li>
-                        <li>Applied OOP concepts and advanced file handling techniques in Python.</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- About section -->
+  <section class="about-section section" id="about">
+    <div class="container">
+      <!-- Section Title -->
+      <div class="row">
+        <div class="section-title">
+          <h2 data-heading="Main Info">About Me</h2>
         </div>
-    </div>
-</section>
+      </div> <!-- /row -->
+      <!-- /Section Title -->
 
-<!-- Projects Section -->
-<section id="projects" class="section section-alt">
-    <div class="section-container">
-        <h2 class="section-title"><span class="title-number">04.</span> Projects</h2>
-        <div class="projects-grid">
+      <!-- About Info -->
+      <div class="row">
+        <div class="about-img">
+          <div class="img-box inner-shadow">
+            <img src="images/profile-pic.jpg" class="outer-shadow" alt="pic"
+              onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+          </div> <!-- /img-box -->
+          <!-- Social Links -->
+          <div class="social-links">
+            <a href="mailto:8077vikas@gmail.com" title="Email" class="outer-shadow hover-in-shadow"><i
+                class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/vikas-pal-75ab1526a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank" title="LinkedIn" class="outer-shadow hover-in-shadow"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/vikas487?tab=repositories" target="_blank" title="GitHub"
+              class="outer-shadow hover-in-shadow"><i class='bx bxl-github'></i></a>
+          </div>
+          <!-- /Social Links -->
+        </div> <!-- /about-img -->
+        <div class="about-info">
+          <p><span>Hello! My name is Vikas Pal. I'm a detail-oriented Computer Science undergraduate</span>
+            with hands-on experience in web technologies, and full-stack projects. Strong foundation in data structures,
+            algorithms, and core computer science concepts, with practical exposure through a Python programming
+            internship and multiple real-world projects. Experienced in building CLI applications, web platforms using
+            Django and React, and responsive user interfaces. A quick learner with a problem-solving mindset.</p>
+          <div class="btn-group" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+            <a href="#contact" class="link-item outer-shadow hover-in-shadow btn-1">Contact Info</a>
+            <a href="https://drive.google.com/file/d/1UCJqvoTBObXngzgTwLzNI925rq6f6Vo3/view?usp=sharing" target="_blank"
+              class="outer-shadow hover-in-shadow btn-1">View / Download
+              CV</a>
+          </div>
+        </div> <!-- /about-info -->
+      </div> <!-- /row -->
+      <!-- /About Info -->
 
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <i class="fas fa-shopping-cart fa-3x"></i>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Cartvana — E-commerce Website</h3>
-                    <p>Full-stack web app with product browsing, dynamic cart management and order processing.</p>
-                    <div class="project-tech">
-                        <span>Django</span>
-                        <span>Python</span>
-                        <span>SQL</span>
-                        <span>HTML/CSS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
-                    </div>
-                </div>
+      <!-- About Tabs -->
+      <div class="row">
+        <div class="about-tabs">
+          <span class="tab-item active" data-target=".skills">skills</span>
+          <span class="tab-item" data-target=".experience">experience</span>
+          <span class="tab-item" data-target=".education">education</span>
+          <span class="tab-item" data-target=".achievements">achievements</span>
+          <span class="tab-item" data-target=".certifications">certifications</span>
+        </div> <!-- /about-tabs -->
+      </div> <!-- /row -->
+      <!-- /About Tabs -->
+
+      <!-- Skills -->
+      <div class="row">
+        <div class="skills tab-content active">
+          <div class="row">
+            <div class="skill-item">
+              <p>C++ & C</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(90% - 14px);"><span>90%</span></div>
+              </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <i class="fas fa-building fa-3x"></i>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Corporate Website</h3>
-                    <p>Responsive corporate website built using React and Bootstrap with reusable components.</p>
-                    <div class="project-tech">
-                        <span>React</span>
-                        <span>Bootstrap</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
-                    </div>
-                </div>
+            <div class="skill-item">
+              <p>Python</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(85% - 14px);"><span>85%</span></div>
+              </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <i class="fab fa-amazon fa-3x"></i>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Amazon Clone</h3>
-                    <p>Frontend e-commerce website built using HTML and CSS with fully responsive design.</p>
-                    <div class="project-tech">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Responsive</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
-                    </div>
-                </div>
+            <div class="skill-item">
+              <p>JavaScript</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(80% - 14px);"><span>80%</span></div>
+              </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <i class="fas fa-gamepad fa-3x"></i>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Tic-Tac-Toe Game</h3>
-                    <p>Interactive browser-based game with win/draw detection logic using vanilla JavaScript.</p>
-                    <div class="project-tech">
-                        <span>JavaScript</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
-                    </div>
-                </div>
+            <div class="skill-item">
+              <p>Django</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(85% - 14px);"><span>85%</span></div>
+              </div>
             </div>
+            <div class="skill-item">
+              <p>React Js</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(75% - 14px);"><span>75%</span></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <p>HTML & CSS</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(95% - 14px);"><span>95%</span></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <p>SQL DataBases</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(80% - 14px);"><span>80%</span></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <p>DSA & OOP</p>
+              <div class="progress inner-shadow">
+                <div class="progress-bar" style="width: calc(85% - 14px);"><span>85%</span></div>
+              </div>
+            </div>
+          </div> <!-- /row -->
+        </div> <!-- /skills -->
+      </div> <!-- /row -->
+      <!-- /Skills -->
+
+      <!-- Experience -->
+      <div class="row">
+        <div class="experience tab-content">
+          <div class="row">
+            <div class="timeline">
+              <div class="row">
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-briefcase icon'></i>
+                    <span>May 2025 — August 2025</span>
+                    <h3>Python Programming Intern</h3>
+                    <h4>Brainwave Matrix</h4>
+                    <p>Developed CLI-based ATM Interface with secure login and file-based persistence. Built Inventory
+                      Management System with JSON storage and full CRUD operations. Applied OOP concepts and advanced
+                      file handling techniques in Python.</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+              </div> <!-- /row -->
+            </div> <!-- /timeline -->
+          </div> <!-- /row -->
+        </div> <!-- /experience -->
+      </div> <!-- /row -->
+      <!-- /Experience -->
+
+      <!-- Education -->
+      <div class="row">
+        <div class="education tab-content">
+          <div class="row">
+            <div class="timeline">
+              <div class="row">
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-graduation icon'></i>
+                    <span>2022 - Present</span>
+                    <h3>B.Tech in Computer Science</h3>
+                    <h4>Kamla Nehru Institute of Technology</h4>
+                    <p>CGPA: 8.0, SGPA (6th Sem): 8.5</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-graduation icon'></i>
+                    <span>2021</span>
+                    <h3>Grade XII</h3>
+                    <h4>Sanford World School</h4>
+                    <p>Percentage: 80%</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-graduation icon'></i>
+                    <span>2019</span>
+                    <h3>Grade X</h3>
+                    <h4>PMS Public School</h4>
+                    <p>Percentage: 88.0%</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+              </div> <!-- /row -->
+            </div> <!-- /timeline -->
+          </div> <!-- /row -->
+        </div> <!-- /education -->
+      </div> <!-- /row -->
+      <!-- /Education -->
+
+      <!-- Achievements -->
+      <div class="row">
+        <div class="achievements tab-content">
+          <div class="row">
+            <div class="timeline">
+              <div class="row">
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-trophy icon'></i>
+                    <span>1st Position</span>
+                    <h3>IdeaThon StartUp Idea Pitching</h3>
+                    <p>Secured 1st Position in IdeaThon StartUp Idea Pitching Competition organised by KNIT Sultanpur.
+                      Our idea, PrakritiLoop, is built around sustainability and industry-focused innovation.</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-medal icon'></i>
+                    <span>3rd Position</span>
+                    <h3>Chess Competition</h3>
+                    <p>Secured 3rd position in Chess competitions organize in Knit Sultanpur.</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-group icon'></i>
+                    <span>Technical Coordinator</span>
+                    <h3>KNIT Sports Fest</h3>
+                    <p>Managed event coordination and team operation and won a trophy in Rocket league sideswipe.</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-star icon'></i>
+                    <span>Top 100</span>
+                    <h3>JEE Aspirants in UP</h3>
+                    <p>Selected among top 100 JEE aspirants in UP for GAIL UTTKARSH SUPER 100 program fostering academic
+                      excellence.</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bx-trending-up icon'></i>
+                    <span>92.31 Percentile</span>
+                    <h3>JEE Main</h3>
+                    <p>Achieved 92.31 percentile in Jee main.</p>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+              </div> <!-- /row -->
+            </div> <!-- /timeline -->
+          </div> <!-- /row -->
+        </div> <!-- /achievements -->
+      </div> <!-- /row -->
+      <!-- /Achievements -->
+
+      <!-- Certifications -->
+      <div class="row">
+        <div class="certifications tab-content">
+          <div class="row">
+            <div class="timeline">
+              <div class="row">
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-certification icon'></i>
+                    <span>Udemy</span>
+                    <h3>Python for Beginners (In-depth)</h3>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-certification icon'></i>
+                    <span>Udemy</span>
+                    <h3>Django Essentials: Build and Deploy Real-World Apps</h3>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                  <div class="timeline-item-inner outer-shadow">
+                    <i class='bx bxs-certification icon'></i>
+                    <span>Infosys Springboard</span>
+                    <h3>Learning Django Web Development</h3>
+                  </div>
+                </div>
+                <!-- /Timeline Item -->
+              </div> <!-- /row -->
+            </div> <!-- /timeline -->
+          </div> <!-- /row -->
+        </div> <!-- /certifications -->
+      </div> <!-- /row -->
+      <!-- /Certifications -->
+    </div> <!-- /container -->
+  </section>
+  <!-- /About section -->
+
+  <!-- Portfolio Section -->
+  <section class="portfolio-section section" id="portfolio">
+    <div class="container">
+
+      <!-- Portfolio Tiltle -->
+      <div class="row">
+        <div class="section-title">
+          <h2 data-heading="portfolio">My Projects</h2>
+        </div>
+      </div> <!-- /row -->
+      <!-- /Portfolio Tiltle -->
+
+      <!-- Portfolio Tabs -->
+      <div class="row">
+        <div class="portfolio-tabs">
+          <span class="tab-item active" data-target="all">all</span>
+          <span class="tab-item" data-target="fullstack">Full Stack</span>
+          <span class="tab-item" data-target="frontend">Front End</span>
+        </div> <!-- /portfolio-tabs -->
+      </div> <!-- /row -->
+      <!-- Portfolio Tabs -->
+
+      <!-- Portfolio Items -->
+      <div class="row portfolio-items">
+
+        <!-- Portfolio Item 1 -->
+        <div class="portfolio-item" data-category="fullstack">
+          <div class="portfolio-item-inner outer-shadow">
+            <div class="portfolio-item-img"
+              style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: #e0e5ec;">
+              <i class="fas fa-shopping-cart fa-5x" style="color: #fb839e;"></i>
+              <!-- View Project -->
+              <span class="view-project">View Details</span>
+              <!-- /View Project -->
+            </div>
+            <p class="portfolio-title">Cartvana — E-commerce</p>
+
+            <!-- Portfolio Item Details -->
+            <div class="portfolio-item-details">
+              <div class="row">
+                <div class="description">
+                  <h3>Project Description:</h3>
+                  <p>Developed a full-stack e-commerce web application with product browsing, dynamic cart management,
+                    order processing, and database integration.</p>
+                </div> <!-- /description -->
+
+                <div class="info">
+                  <h3>Project Info</h3>
+                  <ul>
+                    <li>Tech Stack - <span>Django, Python, SQL, HTML/CSS</span></li>
+                    <li>Code - <span><a href="#"><i class="fab fa-github"></i> GitHub</a></span></li>
+                    <li>Live - <span><a href="#"><i class="fas fa-external-link-alt"></i> Preview</a></span></li>
+                  </ul>
+                </div> <!-- /info -->
+              </div> <!-- /row -->
+            </div>
+            <!-- /Portfolio Item Details -->
+          </div>
+        </div>
+        <!-- /Portfolio Item -->
+
+        <!-- Portfolio Item 2 -->
+        <div class="portfolio-item" data-category="frontend">
+          <div class="portfolio-item-inner outer-shadow">
+            <div class="portfolio-item-img"
+              style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: #e0e5ec;">
+              <i class="fas fa-building fa-5x" style="color: #fb839e;"></i>
+              <!-- View Project -->
+              <span class="view-project">View Details</span>
+              <!-- /View Project -->
+            </div>
+            <p class="portfolio-title">Corporate Website</p>
+            <!-- Portfolio Item Details -->
+            <div class="portfolio-item-details">
+              <div class="row">
+                <div class="description">
+                  <h3>Project Description:</h3>
+                  <p>Developed a responsive corporate website using React and Bootstrap with reusable functional
+                    components. Implemented clean UI structure, component-based architecture.</p>
+                </div> <!-- /description -->
+                <div class="info">
+                  <h3>Project Info</h3>
+                  <ul>
+                    <li>Tech Stack - <span>React, Bootstrap, JavaScript</span></li>
+                    <li>Code - <span><a href="#"><i class="fab fa-github"></i> GitHub</a></span></li>
+                  </ul>
+                </div> <!-- /info -->
+              </div> <!-- /row -->
+            </div>
+            <!-- /Portfolio Item Details -->
+          </div>
+        </div>
+        <!-- /Portfolio Item -->
+
+        <!-- Portfolio Item 3 -->
+        <div class="portfolio-item" data-category="frontend">
+          <div class="portfolio-item-inner outer-shadow">
+            <div class="portfolio-item-img"
+              style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: #e0e5ec;">
+              <i class="fab fa-amazon fa-5x" style="color: #fb839e;"></i>
+              <!-- View Project -->
+              <span class="view-project">View Details</span>
+              <!-- /View Project -->
+            </div>
+            <p class="portfolio-title">Amazon Clone</p>
+            <!-- Portfolio Item Details -->
+            <div class="portfolio-item-details">
+              <div class="row">
+
+                <div class="description">
+                  <h3>Project Description:</h3>
+                  <p>Developed a responsive e-commerce website using HTML, CSS, with product listing, cart feature.
+                    Applied Flexbox and CSS Grid for responsive layout design.</p>
+                </div> <!-- /description -->
+
+                <div class="info">
+                  <h3>Project Info</h3>
+                  <ul>
+                    <li>Tech Stack - <span>HTML5, CSS3, Responsive Design</span></li>
+                    <li>Code - <span><a href="#"><i class="fab fa-github"></i> GitHub</a></span></li>
+                  </ul>
+                </div> <!-- /info -->
+
+              </div> <!-- /row -->
+            </div>
+            <!-- /Portfolio Item Details -->
+          </div>
+        </div>
+        <!-- /Portfolio Item -->
+
+        <!-- Portfolio Item 4 -->
+        <div class="portfolio-item" data-category="frontend">
+          <div class="portfolio-item-inner outer-shadow">
+            <div class="portfolio-item-img"
+              style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: #e0e5ec;">
+              <i class="fas fa-gamepad fa-5x" style="color: #fb839e;"></i>
+              <!-- View Project -->
+              <span class="view-project">View Details</span>
+              <!-- /View Project -->
+            </div>
+            <p class="portfolio-title">Tic-Tac-Toe Game</p>
+
+            <!-- Portfolio Item Details -->
+            <div class="portfolio-item-details">
+              <div class="row">
+                <div class="description">
+                  <h3>Project Description:</h3>
+                  <p>Developed an interactive browser-based Tic-Tac-Toe game with real-time win/draw detection logic.
+                    Game state management using JavaScript arrays and conditional logic. Added restart functionality and
+                    dynamic UI updates.</p>
+                </div> <!-- /description -->
+
+                <div class="info">
+                  <h3>Project Info</h3>
+                  <ul>
+                    <li>Tech Stack - <span>JavaScript, HTML5, CSS3</span></li>
+                    <li>Code - <span><a href="#"><i class="fab fa-github"></i> GitHub</a></span></li>
+                  </ul>
+                </div> <!-- /info -->
+              </div> <!-- /row -->
+            </div>
+            <!-- /Portfolio Item Details -->
+
+          </div>
+        </div>
+        <!-- /Portfolio Item -->
+
+      </div> <!-- /row -->
+      <!-- /Portfolio Items -->
+
+    </div> <!-- /container -->
+  </section>
+  <!-- /Portfolio Section -->
+
+  <!-- Contact Section -->
+  <section class="contact-section section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="section-title">
+          <h2 data-heading="contact">Get In Touch</h2>
+        </div>
+      </div> <!-- /row -->
+      <div class="row">
+        <!-- contact item -->
+        <div class="contact-item">
+          <div class="contact-item-inner outer-shadow">
+            <i class='bx bx-phone'></i>
+            <span>Phone</span>
+            <p>+91-8077811446</p>
+          </div>
+        </div>
+        <!-- /contact item -->
+
+        <!-- contact item -->
+        <div class="contact-item">
+          <div class="contact-item-inner outer-shadow">
+            <i class='bx bx-envelope'></i>
+            <span>Email</span>
+            <p>8077vikas@gmail.com</p>
+          </div>
+        </div>
+        <!-- /contact item -->
+
+        <!-- contact item -->
+        <div class="contact-item">
+          <div class="contact-item-inner outer-shadow">
+            <i class='bx bx-map'></i>
+            <span>Address</span>
+            <p>Moradabad, Uttar Pradesh</p>
+          </div>
+        </div>
+        <!-- /contact item -->
+      </div> <!-- /row -->
+
+      <div class="row">
+        <div class="contact-form">
+          <form action="">
+            <div class="row">
+              <div class="w-50">
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <input type="text" placeholder="Name" class="input-control">
+                </div>
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <input type="text" placeholder="Email" class="input-control">
+                </div>
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <input type="text" placeholder="Subject" class="input-control">
+                </div>
+              </div>
+              <div class="w-50">
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <textarea class="input-control" placeholder="Message"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="submit-btn">
+                <button type="submit" class="btn-1 outer-shadow hover-in-shadow text-transform">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </section>
+  <!-- /Contact Section -->
+
+  <!-- Portfolio Popup -->
+  <div class="pp portfolio-popup">
+    <div class="pp-details">
+      <div class="pp-details-inner">
+        <div class="pp-title">
+          <h2>personal portfolio</h2>
+          <p>Category - <span class="pp-project-category">Web Application</span></p>
+        </div>
+        <div class="pp-project-details">
 
         </div>
+      </div>
     </div>
-</section>
 
-<!-- Achievements Section -->
-<section id="achievements" class="section">
-    <div class="section-container">
-        <h2 class="section-title"><span class="title-number">05.</span> Achievements</h2>
-        <div class="achievements-grid">
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
-                <h3>1st Place — IdeaThon</h3>
-                <p>Startup Competition at KNIT Sultanpur</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-chess-king"></i></div>
-                <h3>3rd Place — Chess</h3>
-                <p>Chess Competition at KNIT Sultanpur</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-users-cog"></i></div>
-                <h3>Technical Coordinator</h3>
-                <p>KNIT Sports Fest</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-star"></i></div>
-                <h3>Top 100 JEE Aspirants</h3>
-                <p>GAIL Utkarsh Super 100 Program</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>92.31 Percentile</h3>
-                <p>JEE Main Examination</p>
-            </div>
+    <div class="separator"></div>
+
+    <div class="pp-main">
+      <div class="pp-main-inner">
+        <div class="pp-project-details-btn outer-shadow hover-in-shadow">Project Details <i class='bx bx-plus'></i>
         </div>
+        <div class="pp-close outer-shadow hover-in-shadow">&times;</div>
+        <img src="" alt="img" class="pp-img outer-shadow">
+        <div class="pp-counter">1 of 6</div>
+      </div>
+      <div class="pp-loader">
+        <div></div>
+      </div>
+      <!-- pp nagivation -->
+      <div class="pp-prev"><i class='bx bx-chevron-left'></i></div>
+      <div class="pp-next"><i class='bx bx-chevron-right'></i></div>
+      <!-- /pp nagivation -->
     </div>
-</section>
+  </div>
+  <!-- /Portfolio Popup -->
 
-<!-- Contact Section -->
-<section id="contact" class="section section-alt">
-    <div class="section-container">
-        <h2 class="section-title"><span class="title-number">06.</span> Get In Touch</h2>
-        <p class="contact-subtitle">I'm currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!</p>
-        <div class="contact-grid">
-            <a href="mailto:8077vikas@gmail.com" class="contact-card">
-                <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
-                <p>8077vikas@gmail.com</p>
-            </a>
-            <a href="tel:+918077811446" class="contact-card">
-                <i class="fas fa-phone-alt"></i>
-                <h3>Phone</h3>
-                <p>+91-8077811446</p>
-            </a>
-            <div class="contact-card">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>Location</h3>
-                <p>Moradabad, Uttar Pradesh</p>
-            </div>
-        </div>
-        <a href="mailto:8077vikas@gmail.com" class="btn btn-primary btn-large"><i class="fas fa-paper-plane"></i> Say Hello</a>
-    </div>
-</section>
 
-<!-- Footer -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-social">
-            <a href="mailto:8077vikas@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
-        <p>Designed & Built by <span>Vikas Pal</span></p>
-        <p class="footer-year">© 2026 All Rights Reserved</p>
-    </div>
-</footer>
-
-<!-- Back to Top -->
-<button class="back-to-top" id="backToTop" title="Back to top">
-    <i class="fas fa-arrow-up"></i>
-</button>
-
-<script src="script.js"></script>
+  <!-- Main Js File -->
+  <script src="script.js"></script>
 </body>
+
 </html>

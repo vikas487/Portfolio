@@ -1,292 +1,328 @@
-/* ============================================
-   VIKAS PAL — PREMIUM PORTFOLIO SCRIPTS
-   ============================================ */
-
-// ── Typing Effect ──
-const typingTexts = [
-    "Full Stack Developer",
-    "Problem Solver",
-    "CS Undergraduate",
-    "Django & React Developer",
-    "Competitive Thinker"
-];
-
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typingEl = document.getElementById("typing-text");
-
-function type() {
-    const current = typingTexts[textIndex];
-
-    if (isDeleting) {
-        typingEl.textContent = current.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typingEl.textContent = current.substring(0, charIndex + 1);
-        charIndex++;
-    }
-
-    let speed = isDeleting ? 40 : 80;
-
-    if (!isDeleting && charIndex === current.length) {
-        speed = 2000; // pause at end
-        isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % typingTexts.length;
-        speed = 500; // pause before next word
-    }
-
-    setTimeout(type, speed);
+function bodyScrollingToggle() {
+    document.body.classList.toggle("stop-scrolling")
 }
+// ======================== Nav Menu Section ======================== //
 
-// Start typing after page load
-window.addEventListener("load", () => {
-    setTimeout(type, 1500);
-});
+(() => {
+    const humBtn = document.querySelector(".menu"),
+        navMenu = document.querySelector(".nav-menu"),
+        closeMenuBtn = document.querySelector(".nav-menu-close");
 
-// ── Smooth Scroll ──
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-            // Close mobile menu if open
-            navLinks.classList.remove("open");
-            hamburger.classList.remove("active");
-        }
-    });
-});
-
-// ── Navbar Scroll Effect ──
-const navbar = document.getElementById("navbar");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
+    humBtn.addEventListener("click", showNavMenu);
+    closeMenuBtn.addEventListener("click", hideNavMenu);
+    function showNavMenu() {
+        navMenu.classList.add("open");
+        bodyScrollingToggle();
     }
-});
-
-// ── Hamburger Menu ──
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.querySelector(".nav-links");
-
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navLinks.classList.toggle("open");
-});
-
-// Close menu when clicking outside
-document.addEventListener("click", (e) => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        hamburger.classList.remove("active");
-        navLinks.classList.remove("open");
+    function hideNavMenu() {
+        navMenu.classList.remove("open");
+        fadeOutEffect();
+        bodyScrollingToggle();
     }
-});
+    function fadeOutEffect() {
+        document.querySelector(".fade-out-effect").classList.add("active");
+        setTimeout(() => {
+            document.querySelector(".fade-out-effect").classList.remove("active");
+        }, 300)
+    }
 
-// ── Scroll Reveal (Intersection Observer) ──
-const revealElements = document.querySelectorAll(".section-container");
-
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
+    // Theme mode logic removed as the style switcher was removed from the HTML.
+    // Attach An Event Handler To Document
+    document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("link-item")) {
+            // Make Sure e.target.hash has a value before overridding default behavior
+            if (e.target.hash !== "") {
+                // prevent default anchor click behavior
+                e.preventDefault();
+                const hash = e.target.hash;
+                // deactivate existing active "section"
+                document.querySelector(".section.active").classList.add("hide");
+                document.querySelector(".section.active").classList.remove("active");
+                // activate new "section"
+                document.querySelector(hash).classList.add("active");
+                document.querySelector(hash).classList.remove("hide");
+                // deactivate existing active nav menu "link-item"
+                navMenu.querySelector(".active").classList.add("outer-shadow", "hover-in-shadow");
+                navMenu.querySelector(".active").classList.remove("active");
+                // if clicked "link-item" is containd withen the nav menu
+                if (navMenu.classList.contains("open")) {
+                    // activate new nav menu link-item
+                    e.target.classList.add("active");
+                    e.target.classList.remove("outer-in-shadow", "hover-in-outer");
+                    // hide nav menu
+                    hideNavMenu();
+                }
+                // if clicked "link-item" is not containd withen the nav menu
+                else {
+                    let navItems = navMenu.querySelectorAll(".link-item");
+                    navItems.forEach((item) => {
+                        if (hash === item.hash) {
+                            // activate new nav menu link-item
+                            item.classList.add("active");
+                            item.classList.remove("outer-in-shadow", "hover-in-outer");
+                        }
+                    });
+                    fadeOutEffect();
+                }
+                window.location.hash = hash;
             }
-        });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-);
-
-revealElements.forEach(el => revealObserver.observe(el));
-
-// ── Active Nav Link Highlight ──
-const sections = document.querySelectorAll(".section");
-const navLinksAll = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (scrollY >= sectionTop) {
-            current = section.getAttribute("id");
         }
     });
 
-    navLinksAll.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
+})();
+
+
+
+
+// ======================== About Section ======================== //
+(() => {
+    // Set Variables
+    const about_section = document.querySelector(".about-section"),
+        about_tabs = document.querySelector(".about-tabs");
+    // Add Click On Tabs
+    about_tabs.addEventListener("click", (e) => {
+
+        // If e.target has "tab-item" class and not has "active" class
+        if (e.target.classList.contains("tab-item") && !e.target.classList.contains("active")) {
+            // Get Attr From Element Clicked
+            const target = e.target.getAttribute("data-target");
+            // deactivate existing active "tab-item"
+            about_tabs.querySelector(".active").classList.remove("active");
+            // Activate New "tab-item"
+            e.target.classList.add("active");
+            // deactivate existing active "tab-content"
+            about_section.querySelector(".tab-content.active").classList.remove("active");
+            // Activate New "tab-content"
+            about_section.querySelector(target).classList.add("active");
         }
     });
-});
+})();
 
-// ── Back to Top Button ──
-const backToTop = document.getElementById("backToTop");
+// ======================== Portfolio Section ======================== //
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 500) {
-        backToTop.classList.add("visible");
-    } else {
-        backToTop.classList.remove("visible");
-    }
-});
+(() => {
+    // Set Variables
+    const
+        filterContainer = document.querySelector(".portfolio-tabs"),
+        portfolioItemsContainer = document.querySelector(".portfolio-items"),
+        portfolioItems = document.querySelectorAll(".portfolio-item"),
+        popUp = document.querySelector(".portfolio-popup"),
+        prevBtn = document.querySelector(".pp-prev"),
+        nextBtn = document.querySelector(".pp-next"),
+        closeBtn = document.querySelector(".pp-close"),
+        project_details_container = document.querySelector(".pp-details"),
+        projectDetailsBtn = document.querySelector(".pp-project-details-btn");
+    let itemIndex, slideIndex, screeshots;
 
-backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
+    // Filter Portfolio Items
+    filterContainer.addEventListener("click", (e) => {
+        // If e.target has "tab-item" class and not has "active" class
+        if (e.target.classList.contains("tab-item") && !e.target.classList.contains("active")) {
+            // deactivate existing active "filter-item"
+            filterContainer.querySelector(".active").classList.remove("active");
+            // Activate New "filter-item"
+            e.target.classList.add("active");
+            // Get Attr From Element Clicked
+            const target = e.target.getAttribute("data-target");
+            // Loop On All Portfolio Item
+            portfolioItems.forEach((item) => {
+                // If Attr From Element Clicked = Attr From Item Or Attr From Element Clicked = all
+                if (target == item.getAttribute("data-category") || target == "all") {
+                    // Remove Hide On Item True
+                    item.classList.remove("hide");
+                    // Add Show On Item True
+                    item.classList.add("show");
+                } else {
+                    // Remove Show On Item Fals
+                    item.classList.remove("show");
+                    // Add Hide On Item False
+                    item.classList.add("hide")
+                }
+            })
 
-// ── Counter Animation ──
-const statNumbers = document.querySelectorAll(".stat-number");
+        }
+    });
 
-const counterObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute("data-target"));
-                animateCounter(entry.target, target);
-                counterObserver.unobserve(entry.target);
+    // Click On Item
+    portfolioItemsContainer.addEventListener("click", (e) => {
+        // if Element Existing "portfolio-item-inner"
+        if (e.target.closest(".portfolio-item-inner")) {
+            // Get The Parent Element
+            const portfolioItem = e.target.closest(".portfolio-item-inner").parentElement;
+            // Get The Portfolio Item Index
+            itemIndex = Array.from(portfolioItem.parentElement.children).indexOf(portfolioItem);
+            // Get All Screenshots From All Elements
+            screeshots = portfolioItems[itemIndex].querySelector(".portfolio-item-img img").getAttribute("data-screenshot");
+
+            // Convert Screenshots Into Array
+            screeshots = screeshots.split(",");
+            // If Screenshots Length = 1
+            if (screeshots.length === 1) {
+                // Display None On Next And Prev Btn
+                nextBtn.style.display = "none";
+                prevBtn.style.display = "none";
+            } else {
+                // Display Block On Next And Prev Btn
+                nextBtn.style.display = "block";
+                prevBtn.style.display = "block";
             }
-        });
-    },
-    { threshold: 0.5 }
-);
+            // Set slideIndex
+            slideIndex = 0;
+            // Run Function's
+            popupToggle();
+            popupSlideshow();
+            popupDetails();
+            // ======================
+        }
+    });
+    // Add Event On Close Btn
+    closeBtn.addEventListener("click", () => {
+        // Run Function Before Anything
+        popupToggle()
+        // If project_details_container Has Class Active
+        if (project_details_container.classList.contains("active")) {
+            // Run Function To close the information
+            popupDetailsToggle();
+        }
+    });
 
-statNumbers.forEach(num => counterObserver.observe(num));
+    // To Open And Close Project Details
+    function popupToggle() {
+        // Toggle Class "Open" On Popup
+        popUp.classList.toggle("open");
+        // Toggle Class "stop-scrolling" On Body
+        bodyScrollingToggle();
+    }
 
-function animateCounter(el, target) {
-    let current = 0;
-    const increment = target / 60;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            el.textContent = target;
-            clearInterval(timer);
+    // Set Slideshow And Set Preload Img
+    function popupSlideshow() {
+        // Set Img Src For Item
+        const imgSrc = screeshots[slideIndex],
+            // Select Img From Html
+            popupImg = popUp.querySelector(".pp-img");
+        // Activate Loader Before Img Loading
+        popUp.querySelector(".pp-loader").classList.add("active");
+        // Set Src Img From screeshots[slideIndex]
+        popupImg.src = imgSrc;
+        // Onload Img Remove Preload
+        popupImg.onload = () => {
+            // delete loader after img loading
+            popUp.querySelector(".pp-loader").classList.remove("active");
+        };
+        // Set TextContent For Counter Slide
+        popUp.querySelector(".pp-counter").innerHTML = (slideIndex + 1) + " of " + screeshots.length;
+    }
+
+    // Next Slide
+    nextBtn.addEventListener("click", () => {
+        // If Img For Slide = Last Img Set Current Img To First Img
+        if (slideIndex === screeshots.length - 1) {
+            slideIndex = 0;
+        }
+        // Else Get Current Img And Plus Him one
+        else {
+            slideIndex++
+        }
+        // Run Function To Run Code Again To SlideShow
+        popupSlideshow()
+    });
+
+    // Prev Slide
+    prevBtn.addEventListener("click", () => {
+        // If Img For Slide <= First Img Set Current Img To Last Img
+        if (slideIndex <= 0) {
+            slideIndex = screeshots.length - 1;
+        }
+        // Else Get Current Img And minus Him One
+        else {
+            slideIndex--
+        }
+        // Run Function To Run Code Again To SlideShow
+        popupSlideshow()
+    });
+
+    // Function To Set Data For All Items
+    function popupDetails() {
+        // If Details For Item Clicked Not Available Don't Show Button For Details
+        if (!portfolioItems[itemIndex].querySelector(".portfolio-item-details")) {
+            projectDetailsBtn.style.display = "none";
+            // Don't make the function work
+            return;
+        }
+        // If Details For Item Clicked Available Show Button For Details
+        projectDetailsBtn.style.display = "block";
+        // Get The Project Details
+        const
+            // Get Details For Every Single Item
+            details = portfolioItems[itemIndex].querySelector(".portfolio-item-details").innerHTML;
+        // Get Title For Every Single Item
+        const title = portfolioItems[itemIndex].querySelector(".portfolio-title").innerHTML;
+        // Get Category For Every Single Item
+        const category = portfolioItems[itemIndex].getAttribute("data-category");
+        // Get Popup Category To Write Inside It Category For Every Single Item And Remove "-"
+        popUp.querySelector(".pp-title span").innerHTML = category.split("-").join(" ");
+        // Get Popup Title To Write Inside It Title For Every Single Item
+        popUp.querySelector(".pp-title h2").innerHTML = title;
+        // Get Popup Details To Write Inside It Details For Every Single Item
+        popUp.querySelector(".pp-project-details").innerHTML = details;
+    }
+
+    if (projectDetailsBtn) {
+        // on click on button for details run popupDetailsToggle function
+        projectDetailsBtn.addEventListener("click", popupDetailsToggle);
+    }
+
+    // Function To Set Height And Toggle Icon Btn And Toggle Class Active On project_details_container
+    function popupDetailsToggle() {
+        // If project_details_container Has Class "active"
+        if (project_details_container.classList.contains("active")) {
+            // Remove Minus Icon On Button
+            projectDetailsBtn.querySelector("i").classList.remove("bx-minus");
+            // Add Plus Icon On Button
+            projectDetailsBtn.querySelector("i").classList.add("bx-plus-medical");
+            // Remove Class Active On project_details_container
+            project_details_container.classList.remove("active");
+            // Set project_details_container Height = 0
+            project_details_container.style.maxHeight = 0 + "px"
         } else {
-            el.textContent = Math.ceil(current);
+            // Remove Plus Icon On Button
+            projectDetailsBtn.querySelector("i").classList.remove("bx-plus-medical");
+            // Add Minus Icon On Button
+            projectDetailsBtn.querySelector("i").classList.add("bx-minus");
+            // Add Class Active On project_details_container
+            project_details_container.classList.add("active");
+            // Set project_details_container Height = project_details_container.scrollHeight
+            project_details_container.style.maxHeight = project_details_container.scrollHeight + "px";
+            // Set Scroll Top
+            popUp.scrollTo(0, project_details_container.offsetTop);
         }
-    }, 25);
-}
+    }
 
-// ── Particle Background ──
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+})();
 
-let particles = [];
-let mouseX = 0;
-let mouseY = 0;
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
 
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+// Testimonial section removed as it is not part of the current HTML.
 
-// Track mouse for optional interaction
-document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+
+// ======================== Hide All Sections Except Active ======================== //
+
+(() => {
+    const sections = document.querySelectorAll(".section");
+    sections.forEach((section) => {
+        if (!section.classList.contains("active")) {
+            section.classList.add("hide")
+        }
+    });
+})();
+
+
+// ======================== preloade Section ======================== //
+window.addEventListener("load", () => {
+    document.querySelector(".preloader").classList.add("fade-out");
+    setTimeout(() => {
+        document.querySelector(".preloader").style.display = "none";
+    }, 600)
 });
 
-class Particle {
-    constructor() {
-        this.reset();
-    }
-
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.opacity = Math.random() * 0.5 + 0.1;
-    }
-
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-    }
-
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(56, 189, 248, ${this.opacity})`;
-        ctx.fill();
-    }
-}
-
-// Create particles
-function initParticles() {
-    particles = [];
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 80);
-    for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-    }
-}
-
-initParticles();
-window.addEventListener("resize", initParticles);
-
-function connectParticles() {
-    for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < 150) {
-                const opacity = (1 - dist / 150) * 0.15;
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(56, 189, 248, ${opacity})`;
-                ctx.lineWidth = 0.5;
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.stroke();
-            }
-        }
-    }
-}
-
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
-
-    connectParticles();
-    requestAnimationFrame(animateParticles);
-}
-
-animateParticles();
-
-// ── Tilt Effect on Skill Cards (desktop only) ──
-if (window.innerWidth > 768) {
-    document.querySelectorAll("[data-tilt]").forEach(card => {
-        card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -6;
-            const rotateY = ((x - centerX) / centerX) * 6;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-        });
-
-        card.addEventListener("mouseleave", () => {
-            card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
-        });
-    });
-}
+// Removed style switcher logic because the style switcher has been permanently removed from the site.
